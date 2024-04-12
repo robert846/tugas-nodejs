@@ -96,8 +96,8 @@ async function updateUser(request, response, next) {
     const name = request.body.name;
     const email = request.body.email;
 
-
-    const emailExists = await usersService.emailExistsForOtherUser(email, userId);
+    // Di sini variabel id harus digunakan, bukan userId
+    const emailExists = await usersService.emailExistsForOtherUser(email, id);
     if (emailExists) {
       throw errorResponder(
         errorTypes.EMAIL_ALREADY_TAKEN,
